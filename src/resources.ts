@@ -49,18 +49,18 @@ const generateResources = (onProgress: (percent: number) => void, onDone: (resou
     tutorial1.className = 'tutorial';
     tutCtx1.font = '20px sans-serif';
     tutCtx1.fillStyle = '#ccc';
-    tutCtx1.fillText('1. Drag the cable ...', 20, 50);
+    tutCtx1.fillText('1. Złap kabel ...', 20, 50);
     tutCtx1.drawImage(dragPoint, 358, 10);
-    tutCtx1.fillText('2. ...around the power nodes...', 20, 140);
+    tutCtx1.fillText('2. ...owiń dookoła węzłów...', 20, 140);
     tutCtx1.drawImage(createCoilSprite(80), 350, 90);
-    tutCtx1.fillText('3. ...and plug it into the socket!', 20, 230);
+    tutCtx1.fillText('3. ...i podłącz do gniazda!', 20, 230);
     tutCtx1.drawImage(finish, 358, 190);
 
     const [tutorial2, tutCtx2] = createCanvas(450, 100);
     tutorial2.className = 'tutorial';
     tutCtx2.font = '20px sans-serif';
     tutCtx2.fillStyle = '#ccc';
-    tutCtx2.fillText('Isolated cables can overlap others ', 20, 55);
+    tutCtx2.fillText('Kable izolowane mogą się przecinać ', 20, 55);
     tutCtx2.drawImage(createIsolatorSprite(80), 358, 10);
 
 

@@ -148,6 +148,14 @@ const gameData: GameData = {
             'start': [50, 360],
             'finish': [1230, 360],
             'end': [110, 360]
+        }, // TEMPLATE
+		{
+            'spools': [],
+            'isolators': [],
+            'blocks': [],
+            'start': [50, 360],
+            'finish': [1230, 360],
+            'end': [110, 360]
         },
     ]
 };

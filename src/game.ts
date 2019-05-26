@@ -4,7 +4,7 @@ const createGame = () => {
 
     const createLevel = (levelData: LevelData, resources: Resources, onLevelFinish: () => void) => {
 
-        const [canvas, context] = createCanvas(1280, 720);
+        const [canvas, context] = createCanvas(screenWidth(), screenHeight());
         const space = createSpace();
 
         let cancelFrameLoop: () => void;
@@ -25,9 +25,10 @@ const createGame = () => {
         const mouseDragSystem = createMouseDragSystem(inputControl);
 
 
-        // uncomment this lines and the line at the bottom to enable editor mode
-        // const levelEditorSystem = createLevelEditorSystem(space, inputControl);
-        // space.registerSystem(levelEditorSystem);
+        if (editor()) {
+            const levelEditorSystem = createLevelEditorSystem(space, inputControl);
+            space.registerSystem(levelEditorSystem);
+        }
 
 
         space.registerSystem(spoolRenderSystem);
@@ -38,7 +39,7 @@ const createGame = () => {
 
         levelData.spools.forEach((spoolData) => {
             const spoolEntity: SpoolNodeEntity = {
-                pos: {x: spoolData[0], y: spoolData[1]},
+                pos: {x: (spoolData[0] * screenWidth()) / editorWidth, y: (spoolData[1] * screenHeight()) / editorHeight},
                 spool: {size: spoolData[2], type: NodeType.spool},
                 render: {type: NodeType.spool},
             };
@@ -48,7 +49,7 @@ const createGame = () => {
 
         levelData.blocks.forEach((block) => {
             const blockEntity: BlockNodeEntity = {
-                pos: {x: block[0], y: block[1]},
+                pos: {x: (block[0] * screenWidth()) / editorWidth, y: (block[1] * screenHeight()) / editorHeight},
                 block: {size: block[2]},
                 render: {type: NodeType.block}
             };
@@ -57,7 +58,7 @@ const createGame = () => {
 
         levelData.isolators.forEach((isolator) => {
             const blockEntity: SpoolNodeEntity = {
-                pos: {x: isolator[0], y: isolator[1]},
+                pos: {x: (isolator[0] * screenWidth()) / editorWidth, y: (isolator[1] * screenHeight()) / editorHeight},
                 spool: {size: isolator[2], type: NodeType.isolator},
                 render: {type: NodeType.isolator}
             };
@@ -65,13 +66,13 @@ const createGame = () => {
         });
 
         const start: StartNodeEntity = {
-            pos: {x: levelData.start[0], y: levelData.start[1]},
+            pos: {x: (levelData.start[0] * screenWidth()) / editorWidth, y: (levelData.start[1] * screenHeight()) / editorHeight},
             spool: {size: 0, type: NodeType.start},
             render: {type: NodeType.start}
         };
 
         const end: EndNodeEntity = {
-            pos: {x: levelData.end[0], y: levelData.end[1]},
+            pos: {x: (levelData.end[0] * screenWidth()) / editorWidth, y: (levelData.end[1] * screenHeight()) / editorHeight},
             spool: {size: 0, type: NodeType.end},
             render: {type: NodeType.end},
             mouseDrag: {size: 30}
@@ -84,7 +85,7 @@ const createGame = () => {
         const finish: FinishEntity = {
             finish: {},
             render: {type: NodeType.finish},
-            pos: {x: levelData.finish[0], y: levelData.finish[1]}
+            pos: {x: (levelData.finish[0] * screenWidth()) / editorWidth, y: (levelData.finish[1] * screenHeight()) / editorHeight}
         };
 
         //TODO: render layers
