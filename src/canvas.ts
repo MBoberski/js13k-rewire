@@ -1,3 +1,11 @@
+//const editor = false;
+const editor = (): boolean => {
+    var url = new URL(window.location.href);
+    if (url.searchParams.get("editor")) {
+        return true;
+    }
+    return false;
+};
 const createCanvas = (width: number, height: number): [Canvas, Context] => {
     const canvas = document.createElement('canvas');
     canvas.width = width;

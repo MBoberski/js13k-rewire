@@ -25,9 +25,10 @@ const createGame = () => {
         const mouseDragSystem = createMouseDragSystem(inputControl);
 
 
-        // uncomment this lines and the line at the bottom to enable editor mode
-        // const levelEditorSystem = createLevelEditorSystem(space, inputControl);
-        // space.registerSystem(levelEditorSystem);
+        if (editor()) {
+            const levelEditorSystem = createLevelEditorSystem(space, inputControl);
+            space.registerSystem(levelEditorSystem);
+        }
 
 
         space.registerSystem(spoolRenderSystem);

@@ -2,9 +2,18 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Re-Wire</title>
+    <title>Torchwood</title>
+        <!-- SEO Ultimate (http://www.seodesignsolutions.com/wordpress-seo/) -->
+			<link rel="canonical" href="https://torchwood.pl/" />
+			<meta name="description" content="Expij.pl - Gramy po japońsku. jRPG, manga, anime, popkultura." />
+			<meta property="og:description" content="Expij.pl - Gramy po japońsku. jRPG, manga, anime, popkultura." />
+			<meta property="og:url" content="https://torchwood.pl/" />
+			<meta property="og:site_name" content="Torchwood PowerUP!" />
+			<meta name="twitter:card" content="summary" />
+			<meta name="twitter:creator" content="@ExpijPL" />
+			<meta name="twitter:site" content="@ExpijPL" />
+		<!-- /SEO Ultimate -->
     <style>
-
         .btn {
             box-shadow: inset 0px -3px 7px 0px #333333;
             background: linear-gradient(to bottom, #2e2e2e 5%, #212121 100%);
@@ -92,13 +101,12 @@
         }
 
         #menu {
-            top: 70%;
+            top: 80%;
         }
 
         #menu .btn {
             margin-top: 20px;
             width: 200px;
-            display: block
         }
 
         .hidden {
@@ -164,24 +172,31 @@
 <body>
 <div id='game' class='center'>
     <div id='content'></div>
-    <div id='levelInfo' class='blueFont hidden'>Level 6</div>
+    <div id='levelInfo' class='blueFont hidden'>Poziom 6</div>
     <!--<div id='tutorial' class='blueFont'>Level 6</div>-->
     <div id='nodeInfo' class='blueFont hidden'>3 / 10</div>
-    <div id='title' class='center hidden'><h1  class='blueFont'>Re-Wire</h1></div>
-    <div id='description' class='blueFont center hidden'><h2>Bring the System back online by rewiring the power nodes.</h2><h3>The game saves progress automatically, you can come back later and continue from the last played level.</h3> </div>
+    <div id='title' class='center hidden'><h1  class='blueFont'>Torchwood</h1></div>
+    <div id='description' class='blueFont center hidden'><h2>Zmierz się z piętnastoma wymagającymi poziomami! Przywróć zasilanie w Torchwood, połącz ze wszystkie węzły!</h2><h3>Gra zapisywana jest automatycznie!</h3>
+
+	</div>
     <div id='loading' class='center hidden'></canvas></div>
     <div id='menu' class='center hidden'>
-        <a id='startBtn' class="btn">START NEW GAME</a>
-        <a id='continueBtn' class="btn">CONTINUE GAME</a>
+        <a id='startBtn' class="btn">NOWA GRA</a>
+        <a id='continueBtn' class="btn">KONTYNUUJ</a>
+		<br/><br/>
+		<p style = "text-align: center;" class = "blueFont">
+			<b>Inicjatywę wspiera</b><br/>
+			<a href = "https://expij.pl/" target = "_blank"><img src = "https://api.expij.pl/assets/img/expij_logo_alfa.png" alt = "Expij.pl"/></a>
+		</p>
     </div>
     <div id='levelDone' class='center hidden'>
-        <div><h1 id='nextMsg' class='blueFont'>Level completed!</h1></div>
-        <a id='nextBtn' class="btn">NEXT LEVEL</a>
+        <div><h1 id='nextMsg' class='blueFont'>Naprawa ukończona</h1></div>
+        <a id='nextBtn' class="btn">NASTĘPNY POZIOM</a>
     </div>
     <div id='reset' class='hidden'>
         <a id='resetBtn' class='btn'>RESET</a>
-        <a id='backBtn' class='btn hidden'>BACK</a>
-        <a id='skipBtn' class='btn hidden'>NEXT</a>
+        <a id='backBtn' class='btn hidden'>WRÓC</a>
+        <a id='skipBtn' class='btn hidden'>NASTĘPNY</a>
     </div>
 </div>
 <script src='app.js'></script>

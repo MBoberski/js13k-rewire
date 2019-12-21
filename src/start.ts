@@ -6,8 +6,8 @@
 /// <reference path="game.ts" />
 
 const showEndScreen = () => {
-    nextMsg.innerHTML = 'Thanks for playing!';
-    nextBtn.innerHTML = 'AGAIN';
+    nextMsg.innerHTML = 'Zasilanie w pełni przywrócone! <a href = "https://discord.gg/UgEHjET" target="_blank">https://discord.gg/UgEHjET</a>! <a href = "https://expij.pl" target="_blank">Expij.pl</a>! Zapraszamy!';
+    nextBtn.innerHTML = 'JESZCZE RAZ';
     showElement(levelDoneElement, () => {
         nextBtn.addEventListener('click', e => {
             location.reload();
@@ -61,7 +61,7 @@ const startGame = (parent: HTMLElement, resources: Resources, startLevel: number
         });
 
         parent.appendChild(level.canvas);
-        levelInfo.innerHTML = 'Level ' + (currentLevel + 1);
+        levelInfo.innerHTML = 'Poziom ' + (currentLevel + 1);
         showElement([level.canvas, resetElement, levelInfo, nodeInfo]);
 
         const resetLevel = () => {
@@ -134,7 +134,13 @@ const prepareGame = () => {
                 hideUIandStartGame(savedLevel);
             };
 
-            // hideUIandStartGame(10); // skip main menu and start with level
+            if (editor()) {
+                let url = new URL(window.location.href);
+                if (url.searchParams.get("level")) {
+                    let level = url.searchParams.get("level") as string;
+                    hideUIandStartGame(parseInt(level, 0));
+                }
+            }
         });
 
     });
