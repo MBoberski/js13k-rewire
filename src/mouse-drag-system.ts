@@ -64,8 +64,8 @@ const createMouseDragSystem = (inputControl:InputControl): UpdateSystem => {
             const v1 = dragEntity.pos;
 
             // push away from border
-            v1.x = clamp(v1.x, 0, 1280);
-            v1.y = clamp(v1.y, 0, 720);
+            v1.x = clamp(v1.x, 0, screenWidth());
+            v1.y = clamp(v1.y, 0, screenHeight());
 
             // push end node away from spools
             spools.forEach(spool => {

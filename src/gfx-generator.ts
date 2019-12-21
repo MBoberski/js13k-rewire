@@ -295,28 +295,19 @@ const createConnectorButtons = (lightColor:Color, size:number): Canvas => {
 };
 
 const createGameBackground = (): Canvas => {
-    const [canvas, context] = createCanvas(1920, 1280);
+    const [canvas, context] = createCanvas(screenWidth(), screenHeight());
     const image = generateImage(64, 64, v => {
         const m = mulVS(v, 4);
         const col = 1-smoothstep(0.7, 1, createHexField(m, 1))*0.7;
         return newCol(col * 0.117, col * 0.149, col * 0.188, 1);
     });
 
-    const highlight = generateImage(128*2, 72*2, v => {
-        const w = 0.01;
-        const c = smoothstep(0, w*0.6, v.x)*smoothstep(1, 1-w*0.6, v.x)*
-            smoothstep(0, w, v.y)*smoothstep(1, 1-w, v.y);
-
-        return newCol(1, 1, 1, (1-c)*0.04);
-    });
-
-    for (let y = 0; y < 12; y++) {
-        for (let x = 0; x < 24; x++) {
+    for (let y = 0; y < (screenHeight() / 63); y++) {
+        for (let x = 0; x < (screenWidth() / 54); x++) {
             context.drawImage(image, x * 54, y * 63);
         }
     }
 
-    context.drawImage(highlight, 0, 0, 1280, 720);
     return canvas;
 };
 
